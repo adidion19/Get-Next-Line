@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_test.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adidion <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/03 14:47:55 by adidion           #+#    #+#             */
-/*   Updated: 2020/12/07 15:35:43 by adidion          ###   ########.fr       */
+/*   Created: 2020/12/07 13:04:10 by adidion           #+#    #+#             */
+/*   Updated: 2020/12/07 13:48:11 by adidion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-#include <stdlib.h>
-#include <limits.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <stdio.h>
-int get_next_line(int fd, char **line);
-char			*join_str(const char *s1, const char *s2);
-int		ft_strlen(char *str);
-int ft_newline(char *s);
-#endif
+#include "get_next_line.h"
+
+int get_next_line(int fd, char **line)
+{
+	static char *s[OPEN_MAX];
+	int i;
+	if (fd < 0 || fd > OPEN_MAX || 1 > BUFFER_SIZE || line == 0)
+		return (-1);
+	while (1)
+	{
+		if (!
+	}
+}
