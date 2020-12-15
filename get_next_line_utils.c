@@ -6,7 +6,7 @@
 /*   By: adidion <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/03 15:20:34 by adidion           #+#    #+#             */
-/*   Updated: 2020/12/07 15:34:07 by adidion          ###   ########.fr       */
+/*   Updated: 2020/12/14 17:17:02 by adidion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,52 +16,67 @@ int		ft_strlen(char *str)
 {
 	int i;
 
-    i = 0;
+	i = 0;
 	if (!str)
-        return (0);
+		return (0);
 	while (str[i])
 		i++;
 	return (i);
 }
 
-void		*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_strdup(const char *src)
 {
-	char *d;
-	char *s;
+	int		i;
+	char	*dest;
 
-	d = (char *)dst;
-	s = (char *)src;
-	if (dst == src)
-		return (dst);
-	if (s < d)
-	{
-		while (len--)
-			*(d + len) = *(s + len);
-		return (dst);
-	}
-	while (len--)
-		*d++ = *s++;
-	return (dst);
+	i = 0;
+	while (src[i])
+		i++;
+	if (!(dest = malloc(sizeof(char) * (i + 1))))
+		return (0);
+	i = -1;
+	while (src[++i])
+		dest[i] = src[i];
+	dest[i] = '\0';
+	return (dest);
 }
 
-char		*join_str(char const *s1, char const *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	s1_len;
-	size_t	s2_len;
-	size_t	stot_len;
-	char	*rtn;
+	int		i;
+	int		j;
+	int		len;
+	char	*str;
 
+	i = -1;
 	if (!s1 && !s2)
 		return (0);
-	s1_len = ft_strlen((char *)s1);
-	s2_len = ft_strlen((char *)s2);
-	stot_len = s1_len + s2_len + 1;
-	rtn = malloc(sizeof(char) * stot_len);
-	if (!rtn)
+	if (!s1)
+		return (ft_strdup((char*)s2));
+	if (!s2)
+		return (ft_strdup((char*)s1));
+	len = ft_strlen((char*)s1) + ft_strlen((char*)s2);
+	if (!(str = malloc(sizeof(char) * (len + 1))))
 		return (0);
-	ft_memmove(rtn, s1, s1_len);
-	ft_memmove(rtn + s1_len, s2, s2_len);
-	rtn[stot_len - 1] = '\0';
+	while (s1[++i])
+		str[i] = s1[i];
+	j = i;
+	i = -1;
+	while (s2[++i])
+		str[j++] = s2[i];
+	str[j] = '\0';
 	free((char *)s1);
-	return (rtn);
+	return (str);
+}
+
+int		ft_return(int i, char *s)
+{
+	if (i == 0)
+	{
+		if (s)
+			free(s);
+		return (0);
+	}
+	else
+		return (1);
 }
