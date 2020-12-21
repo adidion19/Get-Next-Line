@@ -6,7 +6,7 @@
 /*   By: adidion <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/10 15:38:14 by adidion           #+#    #+#             */
-/*   Updated: 2020/12/14 13:55:40 by adidion          ###   ########.fr       */
+/*   Updated: 2020/12/21 13:18:47 by adidion          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <unistd.h>
-# include <fcntl.h>
-# include <stdio.h>
 
 int		get_next_line(int fd, char **line);
 char	*ft_strjoin(const char *s1, const char *s2);
